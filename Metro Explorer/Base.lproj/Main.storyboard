@@ -28,31 +28,36 @@
                                 </items>
                             </tabBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZR4-m0-0CC">
-                                <rect key="frame" x="34" y="300" width="253" height="76"/>
+                                <rect key="frame" x="18" y="269" width="252" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="select station"/>
                                 <connections>
-                                    <segue destination="cnU-JT-kdl" kind="show" id="bU5-m6-3dA"/>
+                                    <segue destination="cnU-JT-kdl" kind="show" id="MFK-Hv-Mln"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyN-Tp-tm4">
-                                <rect key="frame" x="34" y="403" width="253" height="76"/>
+                                <rect key="frame" x="34" y="379" width="253" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="favorites"/>
                                 <connections>
                                     <segue destination="faT-PY-XpS" kind="show" id="XDX-ta-r9L"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFa-Ua-w0b">
-                                <rect key="frame" x="34" y="207" width="253" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFa-Ua-w0b">
+                                <rect key="frame" x="50" y="177" width="220" height="30"/>
                                 <state key="normal" title="nearest"/>
                                 <connections>
+                                    <action selector="nearestButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pw9-Um-upa"/>
                                     <segue destination="gbJ-BL-fmj" kind="show" id="63s-S2-ojc"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cFa-Ua-w0b" secondAttribute="trailing" constant="50" id="Pmc-wM-OrB"/>
+                            <constraint firstItem="cFa-Ua-w0b" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="rXg-JH-Qyu"/>
+                            <constraint firstItem="cFa-Ua-w0b" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="ruT-Q3-Fwa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -64,16 +69,57 @@
         <scene sceneID="yhr-jU-hAf">
             <objects>
                 <viewController id="cnU-JT-kdl" customClass="MetroStationsViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Xr0-yL-2fu">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Smb-FM-LZ8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="U1q-Wr-s4Y"/>
-                    </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="metroCell" rowHeight="179" id="j7b-zd-U6h" customClass="MetroTableViewCell" customModule="Metro_Explorer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="179"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j7b-zd-U6h" id="6Pj-eJ-FQH">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="178.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="69" translatesAutoresizingMaskIntoConstraints="NO" id="VdV-qR-tZ1">
+                                            <rect key="frame" x="31" y="19" width="149" height="110"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="metroNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGn-Ri-p4O">
+                                                    <rect key="frame" x="0.0" y="0.0" width="149" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="metroAddressLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdO-9T-6EC">
+                                                    <rect key="frame" x="0.0" y="89.5" width="149" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DU8-pG-A0V">
+                                            <rect key="frame" x="258" y="19" width="46" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="metroAddressLabel" destination="IdO-9T-6EC" id="CGn-4X-aCt"/>
+                                    <outlet property="metroLogoImage" destination="DU8-pG-A0V" id="ueA-ee-chn"/>
+                                    <outlet property="metroNameLabel" destination="GGn-Ri-p4O" id="wja-35-J4c"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="delegate" destination="cnU-JT-kdl" id="Scp-9t-q6U"/>
+                        </connections>
+                    </tableView>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JxW-MV-Qth" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1404" y="491"/>
+            <point key="canvasLocation" x="1402.5" y="490.14084507042253"/>
         </scene>
         <!--Landmark Detail View Controller-->
         <scene sceneID="0yZ-fO-bh3">

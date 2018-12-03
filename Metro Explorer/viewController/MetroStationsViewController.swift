@@ -8,23 +8,54 @@
 
 import UIKit
 
-class MetroStationsViewController: UIViewController {
+class MetroStationsViewController: UITableViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    var metros = [Metro]() {
+        didSet {
+            tableView.reloadData()
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let fetchMetroStationManager = FetchMetroStationManager()
+        fetchMetroStationManager.delegate = self
+        fetchMetroStationManager.fetchMetros()
     }
-    */
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return metros.count
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "metroCell", for: indexPath) as! MetroTableViewCell
+        
+        let metro = metros[indexPath.row]
+        
+        cell.metroNameLabel.text = metro.name
+        cell.metroAddressLabel.text = metro.address
+        //TODO: set the image
+        
+        return cell
+    }
+}
+
+extension MetroStationsViewController: FetchMetrosDelegate {
+    func metrosFound(_ metros: [Metro]) {
+        print("no metros found")
+        self.metros = metros
+    }
+    
+    func metrosNotFound() {
+        print("no metros found")
+    }
 
 }

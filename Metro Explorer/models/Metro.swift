@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Metro.swift
 //  Metro Explorer
 //
 //  Created by zhenghao zhang on 12/2/18.
@@ -7,3 +7,9 @@
 //
 
 import Foundation
+struct Metro {
+    let name: String
+    let address: String
+    let iconUrl: String?
+
+}

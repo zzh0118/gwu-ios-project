@@ -20,7 +20,9 @@
 		6EE376B421B49D7800022CA3 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE376B321B49D7800022CA3 /* PersistenceManager.swift */; };
 		6EE376B621B49D8600022CA3 /* FetchLandmarksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE376B521B49D8600022CA3 /* FetchLandmarksManager.swift */; };
 		6EE376B821B49D9500022CA3 /* FetchMetroStationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE376B721B49D9500022CA3 /* FetchMetroStationsManager.swift */; };
-		6EE376BA21B4A68600022CA3 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE376B921B4A68600022CA3 /* File.swift */; };
+		6EE376BE21B4AAAC00022CA3 /* MetroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE376BD21B4AAAC00022CA3 /* MetroTableViewCell.swift */; };
+		6EE376C021B4ACC800022CA3 /* Metro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE376BF21B4ACC800022CA3 /* Metro.swift */; };
+		6EE376C221B4E64F00022CA3 /* MetroResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE376C121B4E64F00022CA3 /* MetroResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +41,9 @@
 		6EE376B321B49D7800022CA3 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		6EE376B521B49D8600022CA3 /* FetchLandmarksManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLandmarksManager.swift; sourceTree = "<group>"; };
 		6EE376B721B49D9500022CA3 /* FetchMetroStationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMetroStationsManager.swift; sourceTree = "<group>"; };
-		6EE376B921B4A68600022CA3 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		6EE376BD21B4AAAC00022CA3 /* MetroTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroTableViewCell.swift; sourceTree = "<group>"; };
+		6EE376BF21B4ACC800022CA3 /* Metro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metro.swift; sourceTree = "<group>"; };
+		6EE376C121B4E64F00022CA3 /* MetroResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetroResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 				6EA348D321ABD5FC000AB61D /* viewController */,
 				6EA348BD21ABD309000AB61D /* AppDelegate.swift */,
 				6EA348C121ABD309000AB61D /* Main.storyboard */,
+				6EE376BD21B4AAAC00022CA3 /* MetroTableViewCell.swift */,
 				6EA348C421ABD30B000AB61D /* Assets.xcassets */,
 				6EA348C621ABD30B000AB61D /* LaunchScreen.storyboard */,
 				6EA348C921ABD30B000AB61D /* Info.plist */,
@@ -99,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				6EA348E121ABF6E2000AB61D /* Landmark.swift */,
+				6EE376BF21B4ACC800022CA3 /* Metro.swift */,
+				6EE376C121B4E64F00022CA3 /* MetroResponse.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -110,7 +117,6 @@
 				6EE376B321B49D7800022CA3 /* PersistenceManager.swift */,
 				6EE376B521B49D8600022CA3 /* FetchLandmarksManager.swift */,
 				6EE376B721B49D9500022CA3 /* FetchMetroStationsManager.swift */,
-				6EE376B921B4A68600022CA3 /* File.swift */,
 			);
 			path = manager;
 			sourceTree = "<group>";
@@ -191,11 +197,13 @@
 				6EE376AB21B4941300022CA3 /* LandmarksViewController.swift in Sources */,
 				6EE376AD21B4943700022CA3 /* MetroStationsViewController.swift in Sources */,
 				6EE376B621B49D8600022CA3 /* FetchLandmarksManager.swift in Sources */,
+				6EE376C021B4ACC800022CA3 /* Metro.swift in Sources */,
 				6EE376B421B49D7800022CA3 /* PersistenceManager.swift in Sources */,
 				6EE376AF21B49B0500022CA3 /* LandmarkDetailViewController.swift in Sources */,
+				6EE376C221B4E64F00022CA3 /* MetroResponse.swift in Sources */,
+				6EE376BE21B4AAAC00022CA3 /* MetroTableViewCell.swift in Sources */,
 				6EA348BE21ABD309000AB61D /* AppDelegate.swift in Sources */,
 				6EA348E221ABF6E2000AB61D /* Landmark.swift in Sources */,
-				6EE376BA21B4A68600022CA3 /* File.swift in Sources */,
 				6EE376B221B49D5F00022CA3 /* LocationDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
