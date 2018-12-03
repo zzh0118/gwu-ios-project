@@ -17,14 +17,10 @@ class FetchMetroStationManager {
     var delegate: FetchMetrosDelegate?
     
     func fetchMetros() {
-        var urlComponents = URLComponents(string: "https://api.foursquare.com/v2/venues/search")!
+        var urlComponents = URLComponents(string: "https://api.wmata.com/Rail.svc/json/jStations?")!
         
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_secret", value: "H20WAGEG5C2YIIP2QJG0CDNMZQ0O0YBECFTUY4ADZQKQCQUS"),
-            URLQueryItem(name: "client_id", value: "KUS3LGMRRJVOP14XPVSVHPHZ5HA00AT40FTIEBSYMWTET40F"),
-            URLQueryItem(name: "v", value: "20181119"),
-            URLQueryItem(name: "ll", value: "38.900140,-77.049447"),
-            URLQueryItem(name: "query", value: "gym")
+            URLQueryItem(name: "api_key", value: "ef5ba3eac7d3430a980ebbf24bc829f0"),
         ]
         
         let url = urlComponents.url!
@@ -59,28 +55,29 @@ class FetchMetroStationManager {
             let decoder = JSONDecoder()
             
             do {
+                print("start do")
                 let metroResponse = try decoder.decode(MetroResponse.self, from: data)
                 
                 //HERE - decoding was successful
                 
                 var metros = [Metro]()
                 
-                for venue in metroResponse.response.venues {
-                    let address = venue.location.formattedAddress.joined(separator: " ")
+                for station in metroResponse.Stations {
+//                    let address = venue.location.formattedAddress.joined(separator: " ")
+//
+//                    let iconPrefix = venue.categories.first?.icon.prefix
+//                    let iconSuffix = venue.categories.first?.icon.suffix
                     
-                    let iconPrefix = venue.categories.first?.icon.prefix
-                    let iconSuffix = venue.categories.first?.icon.suffix
+//                    var iconUrl: String? = nil
+//
+//                    if let iconPrefix = iconPrefix, let iconSuffix = iconSuffix {
+//                        iconUrl = "\(iconPrefix)44\(iconSuffix)"
+//                    }
                     
-                    var iconUrl: String? = nil
+                    let metro = Metro(name: station.Name, address: station.Address.Street)
                     
-                    if let iconPrefix = iconPrefix, let iconSuffix = iconSuffix {
-                        iconUrl = "\(iconPrefix)44\(iconSuffix)"
-                    }
-                    
-                    let metro = Metro(name: venue.name, address: address, iconUrl: iconUrl)
-                    
-                    metros.append(metro)
-                }
+                    metros.append(metro)                }
+                
                 
                 //now what do we do with the gyms????
                 print(metros)

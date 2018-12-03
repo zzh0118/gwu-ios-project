@@ -50,7 +50,7 @@ class MetroStationsViewController: UITableViewController {
 
 extension MetroStationsViewController: FetchMetrosDelegate {
     func metrosFound(_ metros: [Metro]) {
-        print("no metros found")
+        print("metros found")
         self.metros = metros
     }
     

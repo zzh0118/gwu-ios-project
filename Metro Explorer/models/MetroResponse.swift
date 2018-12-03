@@ -10,64 +10,33 @@ import Foundation
 
 struct MetroResponse: Codable {
     
-    let meta: Meta
-    let response: Response
+    let Stations: [Stations]
     
 }
 
-struct Meta: Codable {
+struct Stations: Codable {
     
-    let code: Int
-    let requestId: String
+    let Code: String
+    let Name: String
+    let StationTogether1: String
+    let StationTogether2: String
+    let LineCode1: String
+    let LineCode2: String?
+    let LineCode3: String?
+    let LineCode4: String?
+
+    let Lat: Double
+    let Lon: Double
+    let Address: Address
     
 }
 
-struct Response: Codable {
+struct Address: Codable {
     
-    let venues: [Venues]
-    
-}
-
-struct Venues: Codable {
-    
-    let id: String
-    let name: String
-    let location: Location
-    let categories: [Categories]
-    let referralId: String
-    let hasPerk: Bool
+    let Street: String
+    let City: String
+    let State: String
+    let Zip: String
     
 }
 
-struct Location: Codable {
-    
-    let address: String?
-    let lat: Double
-    let lng: Double
-    let distance: Int
-    let postalCode: String?
-    let cc: String
-    let city: String
-    let state: String
-    let country: String
-    let formattedAddress: [String]
-    
-}
-
-struct Categories: Codable {
-    
-    let id: String
-    let name: String
-    let pluralName: String
-    let shortName: String
-    let icon: Icon
-    let primary: Bool
-    
-}
-
-struct Icon: Codable {
-    
-    let prefix: String
-    let suffix: String
-    
-}
