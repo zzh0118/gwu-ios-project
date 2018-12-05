@@ -12,7 +12,7 @@ protocol FetchMetrosDelegate {
     func metrosFound(_ metros: [Metro])
     func metrosNotFound()
 }
-class FetchMetroStationManager {
+class FetchMetroStationsManager {
     
     var delegate: FetchMetrosDelegate?
     

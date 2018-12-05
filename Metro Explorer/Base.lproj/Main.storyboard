@@ -22,7 +22,7 @@
                                 <rect key="frame" x="60" y="498" width="200" height="30"/>
                                 <state key="normal" title="favorites"/>
                                 <connections>
-                                    <segue destination="faT-PY-XpS" kind="show" id="XDX-ta-r9L"/>
+                                    <segue destination="TqK-H9-B2f" kind="show" id="RW2-BE-iua"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFa-Ua-w0b">
@@ -33,7 +33,6 @@
                                 <state key="normal" title="nearest"/>
                                 <connections>
                                     <action selector="nearestButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pw9-Um-upa"/>
-                                    <segue destination="gbJ-BL-fmj" kind="show" id="63s-S2-ojc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZR4-m0-0CC">
@@ -63,6 +62,74 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140.625" y="81.338028169014081"/>
+        </scene>
+        <!--Landmarks View Controller-->
+        <scene sceneID="87v-cw-IJ2">
+            <objects>
+                <tableViewController id="TqK-H9-B2f" customClass="LandmarksViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y0J-8D-AHJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="landmarkCell" rowHeight="83" id="yYL-jq-ZAb" customClass="LandmarkTableViewCell" customModule="Metro_Explorer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="83"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yYL-jq-ZAb" id="LKj-47-4D7">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="82.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="findacat" translatesAutoresizingMaskIntoConstraints="NO" id="RaH-ib-zdW" customClass="LandmarksImage">
+                                            <rect key="frame" x="226" y="10" width="78" height="62"/>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JSx-2o-CbV">
+                                            <rect key="frame" x="16" y="21" width="188.5" height="41"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LandmarksNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzA-Nw-Cug">
+                                                    <rect key="frame" x="0.0" y="0.0" width="188.5" height="20.5"/>
+                                                    <accessibility key="accessibilityConfiguration" label="LabdmarksNameLabel"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LandmarksAddressLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="10" translatesAutoresizingMaskIntoConstraints="NO" id="M0h-pf-i1o">
+                                                    <rect key="frame" x="0.0" y="20.5" width="188.5" height="20.5"/>
+                                                    <accessibility key="accessibilityConfiguration" label="LandmarksAddressLabel"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="M0h-pf-i1o" firstAttribute="top" secondItem="YzA-Nw-Cug" secondAttribute="bottom" constant="5" id="mGy-Z3-qg4"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="RaH-ib-zdW" secondAttribute="trailing" constant="16" id="AZg-jT-441"/>
+                                        <constraint firstItem="M0h-pf-i1o" firstAttribute="top" secondItem="LKj-47-4D7" secondAttribute="top" constant="21" id="VeX-fo-ntS"/>
+                                        <constraint firstItem="M0h-pf-i1o" firstAttribute="leading" secondItem="LKj-47-4D7" secondAttribute="leading" constant="16" id="eYi-af-xwC"/>
+                                        <constraint firstAttribute="bottom" secondItem="YzA-Nw-Cug" secondAttribute="bottom" constant="20.5" id="fIy-xh-2Ku"/>
+                                        <constraint firstItem="RaH-ib-zdW" firstAttribute="top" secondItem="LKj-47-4D7" secondAttribute="top" constant="10" id="g2k-vN-eha"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="landmarkAddressLabel" destination="M0h-pf-i1o" id="jxQ-o1-rUg"/>
+                                    <outlet property="landmarkLogoImage" destination="RaH-ib-zdW" id="aHB-MH-PkJ"/>
+                                    <outlet property="landmarkNameLabel" destination="YzA-Nw-Cug" id="bAM-CK-jNY"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="TqK-H9-B2f" id="aCZ-hY-6B2"/>
+                            <outlet property="delegate" destination="TqK-H9-B2f" id="dif-U9-Upj"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h9F-1b-HYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140.625" y="1188.3802816901409"/>
         </scene>
         <!--Metro Stations View Controller-->
         <scene sceneID="yhr-jU-hAf">
@@ -135,47 +202,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JxW-MV-Qth" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1402.5" y="490.14084507042253"/>
-        </scene>
-        <!--Landmark Detail View Controller-->
-        <scene sceneID="0yZ-fO-bh3">
-            <objects>
-                <viewController id="faT-PY-XpS" customClass="LandmarkDetailViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="N41-Fr-gvS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="AMe-dx-UC8"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ofP-Yt-95f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1914" y="1373"/>
-        </scene>
-        <!--Landmarks View Controller-->
-        <scene sceneID="5Ic-M0-CId">
-            <objects>
-                <viewController id="gbJ-BL-fmj" customClass="LandmarksViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="XlB-8K-D48">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdQ-3B-Tda">
-                                <rect key="frame" x="65" y="498" width="190" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" label="Close"/>
-                                <state key="normal" title="Close"/>
-                                <connections>
-                                    <action selector="close" destination="gbJ-BL-fmj" eventType="touchUpInside" id="fP8-I3-IPJ"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="SAS-f0-NIC"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8B7-cP-qu9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1012" y="-289.20539730134936"/>
         </scene>
     </scenes>
     <resources>

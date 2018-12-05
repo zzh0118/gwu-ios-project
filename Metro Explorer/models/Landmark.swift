@@ -7,15 +7,8 @@
 //
 
 import Foundation
-
-class Landmark: Codable {
+struct Landmark {
     let name: String
-    let date: Date
-    let pushupsCompleted:Int
+    let address: String
     
-    init(name: String, date: Date, pushupsCompleted: Int) {
-        self.name = name
-        self.date = date
-        self.pushupsCompleted = pushupsCompleted
-    }
 }

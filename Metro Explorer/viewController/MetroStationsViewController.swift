@@ -19,9 +19,15 @@ class MetroStationsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fetchMetroStationManager = FetchMetroStationManager()
-        fetchMetroStationManager.delegate = self
-        fetchMetroStationManager.fetchMetros()
+        let fetchMetroStationsManager = FetchMetroStationsManager()
+        fetchMetroStationsManager.delegate = self
+        fetchMetroStationsManager.fetchMetros()
+        
+//        let fetchLandmarksManager = FetchLandmarksManager()
+//        fetchLandmarksManager.delegate = self
+//        fetchLandmarksManager.fetchLandmark()
+        
+        
     }
     
     // MARK: - Table view data source
