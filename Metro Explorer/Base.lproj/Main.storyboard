@@ -66,6 +66,7 @@
         <!--Landmarks View Controller-->
         <scene sceneID="87v-cw-IJ2">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h9F-1b-HYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="TqK-H9-B2f" customClass="LandmarksViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y0J-8D-AHJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -79,39 +80,40 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="82.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="findacat" translatesAutoresizingMaskIntoConstraints="NO" id="RaH-ib-zdW" customClass="LandmarksImage">
-                                            <rect key="frame" x="226" y="10" width="78" height="62"/>
-                                        </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JSx-2o-CbV">
-                                            <rect key="frame" x="16" y="21" width="188.5" height="41"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JSx-2o-CbV">
+                                            <rect key="frame" x="16" y="5" width="254" height="72.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LandmarksNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzA-Nw-Cug">
-                                                    <rect key="frame" x="0.0" y="0.0" width="188.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="LandmarksNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzA-Nw-Cug">
+                                                    <rect key="frame" x="0.0" y="0.0" width="254" height="47"/>
                                                     <accessibility key="accessibilityConfiguration" label="LabdmarksNameLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LandmarksAddressLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="10" translatesAutoresizingMaskIntoConstraints="NO" id="M0h-pf-i1o">
-                                                    <rect key="frame" x="0.0" y="20.5" width="188.5" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="52" width="254" height="20.5"/>
                                                     <accessibility key="accessibilityConfiguration" label="LandmarksAddressLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="M0h-pf-i1o" firstAttribute="top" secondItem="YzA-Nw-Cug" secondAttribute="bottom" constant="5" id="mGy-Z3-qg4"/>
-                                            </constraints>
                                         </stackView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="findacat" translatesAutoresizingMaskIntoConstraints="NO" id="RaH-ib-zdW" customClass="LandmarksImage">
+                                            <rect key="frame" x="257" y="11" width="40" height="56"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="Mje-59-2nh"/>
+                                                <constraint firstAttribute="height" constant="56" id="oUi-u1-VON"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="RaH-ib-zdW" secondAttribute="trailing" constant="16" id="AZg-jT-441"/>
-                                        <constraint firstItem="M0h-pf-i1o" firstAttribute="top" secondItem="LKj-47-4D7" secondAttribute="top" constant="21" id="VeX-fo-ntS"/>
-                                        <constraint firstItem="M0h-pf-i1o" firstAttribute="leading" secondItem="LKj-47-4D7" secondAttribute="leading" constant="16" id="eYi-af-xwC"/>
-                                        <constraint firstAttribute="bottom" secondItem="YzA-Nw-Cug" secondAttribute="bottom" constant="20.5" id="fIy-xh-2Ku"/>
-                                        <constraint firstItem="RaH-ib-zdW" firstAttribute="top" secondItem="LKj-47-4D7" secondAttribute="top" constant="10" id="g2k-vN-eha"/>
+                                        <constraint firstItem="RaH-ib-zdW" firstAttribute="centerY" secondItem="LKj-47-4D7" secondAttribute="centerY" constant="-2.25" id="2un-LV-bQs"/>
+                                        <constraint firstItem="RaH-ib-zdW" firstAttribute="leading" secondItem="JSx-2o-CbV" secondAttribute="trailing" constant="-13" id="N2o-xy-61O"/>
+                                        <constraint firstItem="JSx-2o-CbV" firstAttribute="leading" secondItem="LKj-47-4D7" secondAttribute="leading" constant="16" id="bMw-rC-a5L"/>
+                                        <constraint firstItem="JSx-2o-CbV" firstAttribute="top" secondItem="LKj-47-4D7" secondAttribute="top" constant="5" id="hTo-zt-7cI"/>
+                                        <constraint firstAttribute="bottom" secondItem="JSx-2o-CbV" secondAttribute="bottom" constant="5" id="oNP-bx-Wwl"/>
+                                        <constraint firstAttribute="trailing" secondItem="RaH-ib-zdW" secondAttribute="trailing" constant="23" id="wTE-h9-kNc"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -127,7 +129,6 @@
                         </connections>
                     </tableView>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h9F-1b-HYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140.625" y="1188.3802816901409"/>
         </scene>

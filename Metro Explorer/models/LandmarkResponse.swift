@@ -9,15 +9,12 @@
 import Foundation
 
 struct LandmarkResponse: Codable {
-
     let businesses: [Businesses]
     let total: Int
     let region: Region
-
 }
 
 struct Businesses: Codable {
-
     let id: String
     let alias: String
     let name: String
@@ -28,12 +25,11 @@ struct Businesses: Codable {
     let categories: [Categories]
     let rating: Double
     let coordinates: Coordinates
-   // let transactions: String // TODO: Please provide a codable type, because Any isn't one.
     let location: Location
     let phone: String
     let displayPhone: String
     let distance: Double
-
+    
     private enum CodingKeys: String, CodingKey {
         case id
         case alias
@@ -45,7 +41,6 @@ struct Businesses: Codable {
         case categories
         case rating
         case coordinates
-        //case transactions
         case location
         case phone
         case displayPhone = "display_phone"
@@ -54,30 +49,25 @@ struct Businesses: Codable {
 }
 
 struct Categories: Codable {
-
     let alias: String
     let title: String
-
 }
 
 struct Coordinates: Codable {
-
     let latitude: Double
     let longitude: Double
-
 }
 
 struct Location: Codable {
-
     let address1: String
-    let address2: String
-    let address3: String
+    let address2: String?
+    let address3: String?
     let city: String
     let zipCode: String
     let country: String
     let state: String
     let displayAddress: [String]
-
+    
     private enum CodingKeys: String, CodingKey {
         case address1
         case address2
@@ -91,15 +81,10 @@ struct Location: Codable {
 }
 
 struct Region: Codable {
-
     let center: Center
-
 }
 
 struct Center: Codable {
-
     let longitude: Double
     let latitude: Double
-
 }
-

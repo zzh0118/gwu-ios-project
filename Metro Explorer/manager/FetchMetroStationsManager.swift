@@ -15,8 +15,17 @@ protocol FetchMetrosDelegate {
 class FetchMetroStationsManager {
     
     var delegate: FetchMetrosDelegate?
-    
+
+
+//    func fetchNearbyGyms(latitude: Double, longitude: Double)
     func fetchMetros() {
+//        var urlComponents = URLComponents(string: Constants.yelpAPIBaseUrl)!
+//
+//        urlComponents.queryItems = [
+//            URLQueryItem(name: "latitude", value: String(latitude)),
+//            URLQueryItem(name: "longitude", value: String(longitude)),
+//            URLQueryItem(name: "categories", value: "gyms")
+//        ]
         var urlComponents = URLComponents(string: "https://api.wmata.com/Rail.svc/json/jStations?")!
         
         urlComponents.queryItems = [

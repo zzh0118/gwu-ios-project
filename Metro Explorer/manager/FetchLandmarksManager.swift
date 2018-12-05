@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct Constants {
+    static let yelpAPIKey = "nYStQP0t3DJF42l6mbEfram_xMJXP2D4L_uixT0GG-O9s50v37-s5NXiy6FouQ-IU93OI6Env4I14qj2Dy2vp_2ewmUkNO1I0RluEMOXKlWTtTBZlb9_KCZtdvsGXHYx"
+    static let yelpAPIBaseUrl = "https://api.yelp.com/v3/businesses/search"
+}
+
 protocol FetchLandmarksDelegate {
     func landmarksFound(_ landmark: [Landmark])
     func landmarksNotFound()
@@ -16,16 +21,24 @@ class FetchLandmarksManager {
     
     var delegate: FetchLandmarksDelegate?
     
+//    func fetchNearbyGyms(latitude: Double, longitude: Double)
     func fetchLandmark() {
-        var urlComponents = URLComponents(string: "https://api.wmata.com/Rail.svc/json/jStations?")!
         
+        var urlComponents = URLComponents(string: Constants.yelpAPIBaseUrl)!
+        
+//        urlComponents.queryItems = [
+//            URLQueryItem(name: "latitude", value: String(latitude)),
+//            URLQueryItem(name: "longitude", value: String(longitude)),
+//            URLQueryItem(name: "categories", value: "gyms")
+//        ]
         urlComponents.queryItems = [
-            URLQueryItem(name: "api_key", value: "ef5ba3eac7d3430a980ebbf24bc829f0"),
+            URLQueryItem(name: "latitude", value: "37.786882"),
+            URLQueryItem(name: "longitude", value: "-122.399972"),
+            URLQueryItem(name: "categories", value: "landmarks")
         ]
-        
         let url = urlComponents.url!
-        
         var request = URLRequest(url: url)
+        request.addValue("Bearer \(Constants.yelpAPIKey)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "GET"
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -74,7 +87,7 @@ class FetchLandmarksManager {
                     //                        iconUrl = "\(iconPrefix)44\(iconSuffix)"
                     //                    }
                     
-                    let landmark = Landmark(name: business.name,address: business.location.address1)
+                    let landmark = Landmark(name: business.name,address: business.location.address1,logoUrlString: business.imageUrl)
                     
                     landmarks.append(landmark)              }
                 

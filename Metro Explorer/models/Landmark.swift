@@ -10,5 +10,7 @@ import Foundation
 struct Landmark {
     let name: String
     let address: String
-    
+    let logoUrlString: URL
+//    let latitude: Double
+//    let longitude: Double
 }

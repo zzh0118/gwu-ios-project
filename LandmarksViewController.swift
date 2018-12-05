@@ -48,6 +48,7 @@ class LandmarksViewController: UITableViewController {
 
         cell.landmarkNameLabel.text = landmark.name
         cell.landmarkAddressLabel.text = landmark.address
+        cell.landmarkLogoImage.load(url: landmark.logoUrlString)
         //TODO: set the image
         
         return cell
@@ -67,4 +68,18 @@ extension LandmarksViewController: FetchLandmarksDelegate {
         print("no landmarks found")
     }
     
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }
