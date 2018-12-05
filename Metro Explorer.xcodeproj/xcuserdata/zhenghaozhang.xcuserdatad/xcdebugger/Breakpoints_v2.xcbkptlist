@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Metro Explorer/manager/FetchMetroStationsManager.swift"
-            timestampString = "565677065.890218"
+            timestampString = "565745125.5949579"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "fetchMetros()"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "fetchMetros(latitude:longitude:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Metro Explorer/manager/FetchMetroStationsManager.swift"
-            timestampString = "565677065.8911721"
+            timestampString = "565745125.595076"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "fetchMetros()"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "fetchMetros(latitude:longitude:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Metro Explorer/manager/FetchMetroStationsManager.swift"
-            timestampString = "565677065.89187"
+            timestampString = "565745125.595153"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "fetchMetros()"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "fetchMetros(latitude:longitude:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Metro Explorer/manager/FetchMetroStationsManager.swift"
-            timestampString = "565677065.892283"
+            timestampString = "565745125.595212"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "fetchMetros()"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "fetchMetros(latitude:longitude:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Metro Explorer/manager/FetchMetroStationsManager.swift"
-            timestampString = "565677065.892611"
+            timestampString = "565745125.595271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "fetchMetros()"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "fetchMetros(latitude:longitude:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Metro Explorer/viewController/MetroStationsViewController.swift"
-            timestampString = "565677065.893232"
+            timestampString = "565745125.595327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Metro Explorer/models/LocationFinder.swift"
-            timestampString = "565677065.8935111"
+            timestampString = "565737173.501304"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"

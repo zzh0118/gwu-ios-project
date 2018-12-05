@@ -10,5 +10,7 @@ import Foundation
 struct Metro {
     let name: String
     let address: String
+    let latitude: Double
+    let longitude: Double
 
 }

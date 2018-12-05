@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class LandmarksViewController: UITableViewController {
-    
+    let fetchLandmarksManager = FetchLandmarksManager()
     var landmarks = [Landmark]() {
         didSet {
             tableView.reloadData()
@@ -18,11 +19,15 @@ class LandmarksViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchLandmarks()
+
         
-        let fetchLandmarksManager = FetchLandmarksManager()
-        fetchLandmarksManager.delegate = self
-        fetchLandmarksManager.fetchLandmark()
-        
+   //     fetchLandmarksManager.delegate = self
+//        MBProgressHUD.hide(for: self.view, animated: true)
+//        fetchLandmarksManager.fetchLandmark(latitude:40.7484 , longitude: 73.9857)
+
+
+//        MBProgressHUD.hide(for: self.view, animated: true)
         //        let fetchLandmarksManager = FetchLandmarksManager()
         //        fetchLandmarksManager.delegate = self
         //        fetchLandmarksManager.fetchLandmark()
@@ -31,6 +36,14 @@ class LandmarksViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
+    private func fetchLandmarks(){
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        fetchLandmarksManager.delegate = self
+        
+//        fetchLandmarksManager.fetchLandmark(latitude:37.786882 , longitude: -122.399972)
+        fetchLandmarksManager.fetchLandmark(latitude:38.900140 , longitude: -77.049447)
+        print("what's the xx")
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -57,29 +70,41 @@ class LandmarksViewController: UITableViewController {
 
 extension LandmarksViewController: FetchLandmarksDelegate {
 
-
     
     func landmarksFound(_ landmarks: [Landmark]) {
-        print("landmarks found")
-        self.landmarks = landmarks
-    }
-    
-    func landmarksNotFound() {
-        print("no landmarks found")
-    }
-    
-}
-
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
+        print("landmarks found - here they are in the controller!")
+        DispatchQueue.main.async {
+            self.landmarks = landmarks
+            
+            MBProgressHUD.hide(for: self.view, animated: true)
         }
+    }
+    
+    func landmarksNotFound(reason: FetchLandmarksManager.FailureReason) {
+        DispatchQueue.main.async {
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            let alertController = UIAlertController(title: "Problem fetching landmarks", message: reason.rawValue, preferredStyle: .alert)
+            
+            switch(reason) {
+            case .noResponse:
+                let retryAction = UIAlertAction(title: "Retry", style: .default, handler: { (action) in
+                    self.fetchLandmarks()
+                })
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler:nil)
+                
+                alertController.addAction(cancelAction)
+                alertController.addAction(retryAction)
+                
+            case .non200Response, .noData, .badData:
+                let okayAction = UIAlertAction(title: "Okay", style: .default, handler:nil)
+                
+                alertController.addAction(okayAction)
+            }
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
     }
 }

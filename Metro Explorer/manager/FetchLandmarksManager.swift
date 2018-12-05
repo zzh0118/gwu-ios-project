@@ -15,27 +15,31 @@ struct Constants {
 
 protocol FetchLandmarksDelegate {
     func landmarksFound(_ landmark: [Landmark])
-    func landmarksNotFound()
+    func landmarksNotFound(reason: FetchLandmarksManager.FailureReason)
 }
 class FetchLandmarksManager {
     
+    enum FailureReason: String {
+        case noResponse = "No response received" //allow the user to try again
+        case non200Response = "Bad response" //give up
+        case noData = "No data recieved" //give up
+        case badData = "Bad data" //give up
+    }
     var delegate: FetchLandmarksDelegate?
     
 //    func fetchNearbyGyms(latitude: Double, longitude: Double)
-    func fetchLandmark() {
+    
+    func fetchLandmark(latitude: Double, longitude: Double) {
         
         var urlComponents = URLComponents(string: Constants.yelpAPIBaseUrl)!
         
-//        urlComponents.queryItems = [
-//            URLQueryItem(name: "latitude", value: String(latitude)),
-//            URLQueryItem(name: "longitude", value: String(longitude)),
-//            URLQueryItem(name: "categories", value: "gyms")
-//        ]
         urlComponents.queryItems = [
-            URLQueryItem(name: "latitude", value: "37.786882"),
-            URLQueryItem(name: "longitude", value: "-122.399972"),
-            URLQueryItem(name: "categories", value: "landmarks")
+            URLQueryItem(name: "categories", value: "landmarks"),
+            URLQueryItem(name: "latitude", value: String(latitude)),
+            URLQueryItem(name: "longitude", value: String(longitude)),
+            
         ]
+       
         let url = urlComponents.url!
         var request = URLRequest(url: url)
         request.addValue("Bearer \(Constants.yelpAPIKey)", forHTTPHeaderField: "Authorization")
@@ -48,7 +52,7 @@ class FetchLandmarksManager {
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("response is nil or not 200")
                 
-                self.delegate?.landmarksNotFound()
+                self.delegate?.landmarksNotFound(reason: .non200Response)
                 
                 return
             }
@@ -58,7 +62,7 @@ class FetchLandmarksManager {
             guard let data = data else {
                 print("data is nil")
                 
-                self.delegate?.landmarksNotFound()
+                self.delegate?.landmarksNotFound( reason: .noData)
                 
                 return
             }
@@ -76,16 +80,6 @@ class FetchLandmarksManager {
                 var landmarks = [Landmark]()
                 
                 for business in landmarkResponse.businesses {
-                    //                    let address = venue.location.formattedAddress.joined(separator: " ")
-                    //
-                    //                    let iconPrefix = venue.categories.first?.icon.prefix
-                    //                    let iconSuffix = venue.categories.first?.icon.suffix
-                    
-                    //                    var iconUrl: String? = nil
-                    //
-                    //                    if let iconPrefix = iconPrefix, let iconSuffix = iconSuffix {
-                    //                        iconUrl = "\(iconPrefix)44\(iconSuffix)"
-                    //                    }
                     
                     let landmark = Landmark(name: business.name,address: business.location.address1,logoUrlString: business.imageUrl)
                     
@@ -103,7 +97,7 @@ class FetchLandmarksManager {
                 print("codable failed - bad data format")
                 print(error.localizedDescription)
                 
-                self.delegate?.landmarksNotFound()
+                self.delegate?.landmarksNotFound(reason: .badData)
             }
         }
         

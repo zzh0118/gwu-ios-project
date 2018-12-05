@@ -10,23 +10,28 @@ import Foundation
 
 protocol FetchMetrosDelegate {
     func metrosFound(_ metros: [Metro])
-    func metrosNotFound()
+    func metrosNotFound(reason: FetchMetroStationsManager.FailureReason)
 }
 class FetchMetroStationsManager {
     
+    enum FailureReason: String {
+        case noResponse = "No response received" //allow the user to try again
+        case non200Response = "Bad response" //give up
+        case noData = "No data recieved" //give up
+        case badData = "Bad data" //give up
+    }
     var delegate: FetchMetrosDelegate?
 
 
 //    func fetchNearbyGyms(latitude: Double, longitude: Double)
-    func fetchMetros() {
-//        var urlComponents = URLComponents(string: Constants.yelpAPIBaseUrl)!
-//
-//        urlComponents.queryItems = [
-//            URLQueryItem(name: "latitude", value: String(latitude)),
-//            URLQueryItem(name: "longitude", value: String(longitude)),
-//            URLQueryItem(name: "categories", value: "gyms")
-//        ]
+    func fetchMetros(latitude: Double, longitude: Double) {
         var urlComponents = URLComponents(string: "https://api.wmata.com/Rail.svc/json/jStations?")!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "latitude", value: String(latitude)),
+            URLQueryItem(name: "longitude", value: String(longitude)),
+//            URLQueryItem(name: "categories", value: "gyms")
+        ]
+
         
         urlComponents.queryItems = [
             URLQueryItem(name: "api_key", value: "ef5ba3eac7d3430a980ebbf24bc829f0"),
@@ -44,7 +49,7 @@ class FetchMetroStationsManager {
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
                 print("response is nil or not 200")
                 
-                self.delegate?.metrosNotFound()
+                self.delegate?.metrosNotFound(reason: .non200Response)
                 
                 return
             }
@@ -54,7 +59,7 @@ class FetchMetroStationsManager {
             guard let data = data else {
                 print("data is nil")
                 
-                self.delegate?.metrosNotFound()
+                self.delegate?.metrosNotFound(reason: .noData)
                 
                 return
             }
@@ -72,20 +77,12 @@ class FetchMetroStationsManager {
                 var metros = [Metro]()
                 
                 for station in metroResponse.Stations {
-//                    let address = venue.location.formattedAddress.joined(separator: " ")
-//
-//                    let iconPrefix = venue.categories.first?.icon.prefix
-//                    let iconSuffix = venue.categories.first?.icon.suffix
                     
-//                    var iconUrl: String? = nil
-//
-//                    if let iconPrefix = iconPrefix, let iconSuffix = iconSuffix {
-//                        iconUrl = "\(iconPrefix)44\(iconSuffix)"
-//                    }
+                    let metro = Metro(name: station.Name, address: station.Address.Street, latitude: station.Lat, longitude: station.Lon)
                     
-                    let metro = Metro(name: station.Name, address: station.Address.Street)
+                    metros.append(metro)
                     
-                    metros.append(metro)                }
+                }
                 
                 
                 //now what do we do with the gyms????
@@ -99,7 +96,7 @@ class FetchMetroStationsManager {
                 print("codable failed - bad data format")
                 print(error.localizedDescription)
                 
-                self.delegate?.metrosNotFound()
+                self.delegate?.metrosNotFound(reason: .badData)
             }
         }
         

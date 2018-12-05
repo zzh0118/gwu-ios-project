@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class MetroStationsViewController: UITableViewController {
-
+    let locationDetector = LocationDetector()
+    let fetchMetroStationsManager = FetchMetroStationsManager()
+    
     var metros = [Metro]() {
         didSet {
             tableView.reloadData()
@@ -19,15 +22,17 @@ class MetroStationsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fetchMetroStationsManager = FetchMetroStationsManager()
         fetchMetroStationsManager.delegate = self
-        fetchMetroStationsManager.fetchMetros()
+        locationDetector.delegate = self
         
-//        let fetchLandmarksManager = FetchLandmarksManager()
-//        fetchLandmarksManager.delegate = self
-//        fetchLandmarksManager.fetchLandmark()
+        fetchMetros()
+
         
-        
+    }
+    
+    private func fetchMetros() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        locationDetector.findLocation()
     }
     
     // MARK: - Table view data source
@@ -49,19 +54,63 @@ class MetroStationsViewController: UITableViewController {
         cell.metroNameLabel.text = metro.name
         cell.metroAddressLabel.text = metro.address
         //TODO: set the image
-        
+//        if let iconUrlString = metro.iconUrl, let url = URL(string: iconUrlString) {
+//            cell.metroLogoImage.load(url: url  )
+//        }
         return cell
+    }
+}
+
+extension MetroStationsViewController: LocationDetectorDelegate {
+    func locationDetected(latitude: Double, longitude: Double) {
+        fetchMetroStationsManager.fetchMetros(latitude: latitude, longitude: longitude)
+    }
+    
+    func locationNotDetected() {
+        print("no location found :(")
+        DispatchQueue.main.async {
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            //TODO: Show a AlertController with error
+        }
     }
 }
 
 extension MetroStationsViewController: FetchMetrosDelegate {
     func metrosFound(_ metros: [Metro]) {
-        print("metros found")
-        self.metros = metros
+        print("metros found - here they are in the controller!")
+        DispatchQueue.main.async {
+            self.metros = metros
+            
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
     }
     
-    func metrosNotFound() {
-        print("no metros found")
+    func metrosNotFound(reason: FetchMetroStationsManager.FailureReason) {
+        DispatchQueue.main.async {
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            let alertController = UIAlertController(title: "Problem fetching gyms", message: reason.rawValue, preferredStyle: .alert)
+            
+            switch(reason) {
+            case .noResponse:
+                let retryAction = UIAlertAction(title: "Retry", style: .default, handler: { (action) in
+                    self.fetchMetros()
+                })
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler:nil)
+                
+                alertController.addAction(cancelAction)
+                alertController.addAction(retryAction)
+                
+            case .non200Response, .noData, .badData:
+                let okayAction = UIAlertAction(title: "Okay", style: .default, handler:nil)
+                
+                alertController.addAction(okayAction)
+            }
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
     }
-
 }
