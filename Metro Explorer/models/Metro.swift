@@ -12,5 +12,5 @@ struct Metro {
     let address: String
     let latitude: Double
     let longitude: Double
-
+    let dis: Double
 }

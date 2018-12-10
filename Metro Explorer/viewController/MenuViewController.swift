@@ -19,9 +19,13 @@ class MenuViewController: UIViewController {
     @IBAction func nearestButtonPressed(_ sender: Any) {
         
         print("nearest button pressed")
-        performSegue(withIdentifier: "metrosSegue", sender: self)
+        performSegue(withIdentifier: "nearestSegue", sender: self)
     }
-    
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        
+        print("nearest button pressed")
+        performSegue(withIdentifier: "searchSegue", sender: self)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,6 +42,16 @@ class MenuViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "nearestSegue" {
+            let destination = segue.destination as! MetroStationsViewController
+            destination.searchType = "nearest"
+        } else if segue.identifier == "searchSegue" {
+            let destination = segue.destination as! MetroStationsViewController
+            destination.searchType = "search"
+        }
     }
 
 

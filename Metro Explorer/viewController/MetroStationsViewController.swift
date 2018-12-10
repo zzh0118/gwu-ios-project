@@ -9,12 +9,20 @@
 import UIKit
 import MBProgressHUD
 
+
 class MetroStationsViewController: UITableViewController {
     let locationDetector = LocationDetector()
     let fetchMetroStationsManager = FetchMetroStationsManager()
-    
+
+    var searchType = "search"
+    //var sorted = [Metro]()
     var metros = [Metro]() {
         didSet {
+        
+            if searchType == "nearest"{
+                //dic.sort {$0.0 < $1.0}?
+                metros.sort(by: { $0.dis < $1.dis })
+            }
             tableView.reloadData()
         }
     }
@@ -24,19 +32,18 @@ class MetroStationsViewController: UITableViewController {
         
         fetchMetroStationsManager.delegate = self
         locationDetector.delegate = self
-        
         fetchMetros()
-
-        
     }
     
     private func fetchMetros() {
+        print("fetchMetros once")
         MBProgressHUD.showAdded(to: self.view, animated: true)
         locationDetector.findLocation()
     }
     
     // MARK: - Table view data source
     
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -118,7 +125,7 @@ extension MetroStationsViewController: FetchMetrosDelegate {
             switch(reason) {
             case .noResponse:
                 let retryAction = UIAlertAction(title: "Retry", style: .default, handler: { (action) in
-                    self.fetchMetros()
+                   self.fetchMetros()
                 })
                 
                 let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler:nil)

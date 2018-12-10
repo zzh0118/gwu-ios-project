@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol FetchMetrosDelegate {
     func metrosFound(_ metros: [Metro])
@@ -75,18 +76,23 @@ class FetchMetroStationsManager {
                 //HERE - decoding was successful
                 
                 var metros = [Metro]()
-                
+                print("now la and li is \(latitude)  \(longitude)")
                 for station in metroResponse.Stations {
+                    let coordinate₀ = CLLocation(latitude: station.Lat, longitude: station.Lon)
+                    let coordinate₁ = CLLocation(latitude: latitude, longitude: longitude)
                     
-                    let metro = Metro(name: station.Name, address: station.Address.Street, latitude: station.Lat, longitude: station.Lon)
+                    let distanceInMeters = coordinate₀.distance(from: coordinate₁) // result is in meters
                     
+                    let metro = Metro(name: station.Name, address: station.Address.Street, latitude: station.Lat, longitude: station.Lon,dis: distanceInMeters)
+                    
+                    print("\(metro.name) distance is \(metro.dis)")
                     metros.append(metro)
                     
                 }
                 
                 
                 //now what do we do with the gyms????
-                print(metros)
+                //print(metros)
                 
                 self.delegate?.metrosFound(metros)
                 
