@@ -83,7 +83,6 @@
         <!--Landmarks View Controller-->
         <scene sceneID="87v-cw-IJ2">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="h9F-1b-HYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="TqK-H9-B2f" customClass="LandmarksViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Y0J-8D-AHJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -147,6 +146,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h9F-1b-HYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="141" y="1357"/>
         </scene>
@@ -254,7 +254,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="TqK-H9-B2f" kind="show" id="4W0-Vl-EAY"/>
+                        <segue destination="TqK-H9-B2f" kind="show" identifier="LandmarksSegue" id="4W0-Vl-EAY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JxW-MV-Qth" userLabel="First Responder" sceneMemberID="firstResponder"/>

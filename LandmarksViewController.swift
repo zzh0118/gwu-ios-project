@@ -11,6 +11,7 @@ import MBProgressHUD
 
 class LandmarksViewController: UITableViewController {
     let fetchLandmarksManager = FetchLandmarksManager()
+    var station : Metro?
     var landmarks = [Landmark]() {
         didSet {
             tableView.reloadData()
@@ -21,17 +22,7 @@ class LandmarksViewController: UITableViewController {
         super.viewDidLoad()
         fetchLandmarks()
 
-        
-   //     fetchLandmarksManager.delegate = self
-//        MBProgressHUD.hide(for: self.view, animated: true)
-//        fetchLandmarksManager.fetchLandmark(latitude:40.7484 , longitude: 73.9857)
 
-
-//        MBProgressHUD.hide(for: self.view, animated: true)
-        //        let fetchLandmarksManager = FetchLandmarksManager()
-        //        fetchLandmarksManager.delegate = self
-        //        fetchLandmarksManager.fetchLandmark()
-        
         
     }
     
@@ -42,7 +33,7 @@ class LandmarksViewController: UITableViewController {
         
 //        fetchLandmarksManager.fetchLandmark(latitude:37.786882 , longitude: -122.399972)
         fetchLandmarksManager.fetchLandmark(latitude:38.900140 , longitude: -77.049447)
-        print("what's the xx")
+
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

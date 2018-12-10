@@ -59,7 +59,30 @@ class MetroStationsViewController: UITableViewController {
 //        }
         return cell
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("you select: \(indexPath.row)")
+        
+        performSegue(withIdentifier: "LandmarksSegue", sender: self)
+        
+    }
+    
+    
+    
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        let row = sender as! Int
+    //        let destination = segue.destination as! LandmarksViewController
+    //        destination.station = metros[row]
+    //
+    //    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LandmarksSegue" {
+            let destination = segue.destination as! LandmarksViewController
+            destination.station = metros[tableView.indexPathForSelectedRow!.row]
+        }
+    }
 }
+
 
 extension MetroStationsViewController: LocationDetectorDelegate {
     func locationDetected(latitude: Double, longitude: Double) {
