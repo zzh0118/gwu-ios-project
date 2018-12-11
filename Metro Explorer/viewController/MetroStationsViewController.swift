@@ -15,12 +15,11 @@ class MetroStationsViewController: UITableViewController {
     let fetchMetroStationsManager = FetchMetroStationsManager()
 
     var searchType = "search"
-    //var sorted = [Metro]()
+
     var metros = [Metro]() {
         didSet {
         
             if searchType == "nearest"{
-                //dic.sort {$0.0 < $1.0}?
                 metros.sort(by: { $0.dis < $1.dis })
             }
             tableView.reloadData()
@@ -30,14 +29,16 @@ class MetroStationsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchMetroStationsManager.delegate = self
+        
         locationDetector.delegate = self
         fetchMetros()
     }
     
     private func fetchMetros() {
         print("fetchMetros once")
+       
         MBProgressHUD.showAdded(to: self.view, animated: true)
+        fetchMetroStationsManager.delegate = self
         locationDetector.findLocation()
     }
     
@@ -60,10 +61,7 @@ class MetroStationsViewController: UITableViewController {
         
         cell.metroNameLabel.text = metro.name
         cell.metroAddressLabel.text = metro.address
-        //TODO: set the image
-//        if let iconUrlString = metro.iconUrl, let url = URL(string: iconUrlString) {
-//            cell.metroLogoImage.load(url: url  )
-//        }
+
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -75,12 +73,7 @@ class MetroStationsViewController: UITableViewController {
     
     
     
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        let row = sender as! Int
-    //        let destination = segue.destination as! LandmarksViewController
-    //        destination.station = metros[row]
-    //
-    //    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LandmarksSegue" {
@@ -93,6 +86,7 @@ class MetroStationsViewController: UITableViewController {
 
 extension MetroStationsViewController: LocationDetectorDelegate {
     func locationDetected(latitude: Double, longitude: Double) {
+        print("locationDetected work")
         fetchMetroStationsManager.fetchMetros(latitude: latitude, longitude: longitude)
     }
     

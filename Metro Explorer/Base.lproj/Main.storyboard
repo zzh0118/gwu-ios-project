@@ -30,7 +30,7 @@
                                 <state key="normal" title="nearest"/>
                                 <connections>
                                     <action selector="nearestButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3l5-z3-hJU"/>
-                                    <segue destination="cnU-JT-kdl" kind="push" identifier="nearestSegue" id="GKT-iT-wx6"/>
+                                    <segue destination="cnU-JT-kdl" kind="show" identifier="nearestSegue" id="GKT-iT-wx6"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZR4-m0-0CC">
@@ -38,7 +38,7 @@
                                 <state key="normal" title="select station"/>
                                 <connections>
                                     <action selector="searchButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xRK-eR-EzW"/>
-                                    <segue destination="cnU-JT-kdl" kind="push" identifier="searchSegue" id="nq8-DG-0e0"/>
+                                    <segue destination="cnU-JT-kdl" kind="show" identifier="searchSegue" id="n26-Tc-YxR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -72,25 +72,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="landmarkCell" rowHeight="83" id="yYL-jq-ZAb" customClass="LandmarkTableViewCell" customModule="Metro_Explorer" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="landmarkCell" rowHeight="83" id="yYL-jq-ZAb" customClass="LandmarkTableViewCell" customModule="Metro_Explorer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="83"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yYL-jq-ZAb" id="LKj-47-4D7">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="82.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="286" height="82.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JSx-2o-CbV">
-                                            <rect key="frame" x="16" y="5" width="254" height="72.5"/>
+                                            <rect key="frame" x="16" y="5" width="220" height="72.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="LandmarksNameLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzA-Nw-Cug">
-                                                    <rect key="frame" x="0.0" y="0.0" width="254" height="47"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="220" height="47"/>
                                                     <accessibility key="accessibilityConfiguration" label="LabdmarksNameLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LandmarksAddressLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="10" translatesAutoresizingMaskIntoConstraints="NO" id="M0h-pf-i1o">
-                                                    <rect key="frame" x="0.0" y="52" width="254" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="52" width="220" height="20.5"/>
                                                     <accessibility key="accessibilityConfiguration" label="LandmarksAddressLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,7 +99,7 @@
                                             </subviews>
                                         </stackView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="findacat" translatesAutoresizingMaskIntoConstraints="NO" id="RaH-ib-zdW" customClass="LandmarksImage">
-                                            <rect key="frame" x="257" y="11" width="40" height="56"/>
+                                            <rect key="frame" x="223" y="11" width="40" height="56"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="Mje-59-2nh"/>
                                                 <constraint firstAttribute="height" constant="56" id="oUi-u1-VON"/>
@@ -119,7 +119,7 @@
                                     <outlet property="landmarkAddressLabel" destination="M0h-pf-i1o" id="jxQ-o1-rUg"/>
                                     <outlet property="landmarkLogoImage" destination="RaH-ib-zdW" id="aHB-MH-PkJ"/>
                                     <outlet property="landmarkNameLabel" destination="YzA-Nw-Cug" id="bAM-CK-jNY"/>
-                                    <segue destination="TmB-6U-7aU" kind="show" id="YaC-2T-IYM"/>
+                                    <segue destination="TmB-6U-7aU" kind="show" identifier="LandmarksDetailSegue" id="rtM-5G-cgc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -141,18 +141,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l6f-r8-UPq">
-                                <rect key="frame" x="40" y="178" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7j-Om-1dx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7j-Om-1dx" customClass="landmarkName">
                                 <rect key="frame" x="90" y="95" width="141" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eV0-Hu-Rd4">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eV0-Hu-Rd4" customClass="landmarkDescription">
                                 <rect key="frame" x="40" y="367" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -160,10 +156,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xyZ-g0-Ocg">
+                                <rect key="frame" x="40" y="167" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="360-yU-Xoq"/>
                     </view>
+                    <navigationItem key="navigationItem" id="jzR-Y6-cWZ"/>
+                    <connections>
+                        <outlet property="landmarkDescription" destination="eV0-Hu-Rd4" id="8x4-SK-Rfe"/>
+                        <outlet property="landmarkImage" destination="xyZ-g0-Ocg" id="iqf-cA-ZYp"/>
+                        <outlet property="landmarkName" destination="I7j-Om-1dx" id="zy8-Lg-VjI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3d8-Tr-5Db" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -215,7 +221,7 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="findacat" translatesAutoresizingMaskIntoConstraints="NO" id="DU8-pG-A0V" customClass="findacat">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="findacat" translatesAutoresizingMaskIntoConstraints="NO" id="DU8-pG-A0V">
                                             <rect key="frame" x="260" y="20" width="50" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="lwR-FB-P7Y"/>

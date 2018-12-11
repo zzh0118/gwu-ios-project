@@ -31,7 +31,6 @@ class LandmarksViewController: UITableViewController {
         MBProgressHUD.showAdded(to: self.view, animated: true)
         fetchLandmarksManager.delegate = self
         
-//        fetchLandmarksManager.fetchLandmark(latitude:37.786882 , longitude: -122.399972)
         fetchLandmarksManager.fetchLandmark(latitude:38.900140 , longitude: -77.049447)
 
     }
@@ -56,6 +55,22 @@ class LandmarksViewController: UITableViewController {
         //TODO: set the image
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("you select: \(indexPath.row)")
+        
+        performSegue(withIdentifier: "LandmarksDetailSegue", sender: self)
+        
+    }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LandmarksDetailSegue" {
+            let destination = segue.destination as! LandmarkDetailViewController
+            destination.landmark = landmarks[tableView.indexPathForSelectedRow!.row]
+        }
     }
 }
 

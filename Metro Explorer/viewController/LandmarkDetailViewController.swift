@@ -9,10 +9,20 @@
 import UIKit
 
 class LandmarkDetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var landmarkName: UILabel!
+    @IBOutlet weak var landmarkImage: UIImageView!
+    @IBOutlet weak var landmarkDescription :UITextView!
+    
+  
+    var landmark : Landmark?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        landmarkName.text = landmark?.name
+       // landmarkImage.load(url: (landmark?.logoUrlString))
+       // landmarkDescription.textStorage = landmark?.name
         // Do any additional setup after loading the view.
     }
     

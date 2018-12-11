@@ -24,7 +24,7 @@ class FetchMetroStationsManager {
     var delegate: FetchMetrosDelegate?
 
 
-//    func fetchNearbyGyms(latitude: Double, longitude: Double)
+
     func fetchMetros(latitude: Double, longitude: Double) {
         var urlComponents = URLComponents(string: "https://api.wmata.com/Rail.svc/json/jStations?")!
         urlComponents.queryItems = [
@@ -85,7 +85,7 @@ class FetchMetroStationsManager {
                     
                     let metro = Metro(name: station.Name, address: station.Address.Street, latitude: station.Lat, longitude: station.Lon,dis: distanceInMeters)
                     
-                    print("\(metro.name) distance is \(metro.dis)")
+                   // print("\(metro.name) distance is \(metro.dis)")
                     metros.append(metro)
                     
                 }
