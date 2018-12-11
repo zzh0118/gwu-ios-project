@@ -60,14 +60,14 @@ class LandmarksViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("you select: \(indexPath.row)")
         
-        performSegue(withIdentifier: "LandmarksDetailSegue", sender: self)
+        performSegue(withIdentifier: "landmarksDetailSegue", sender: self)
         
     }
     
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LandmarksDetailSegue" {
+        if segue.identifier == "landmarksDetailSegue" {
             let destination = segue.destination as! LandmarkDetailViewController
             destination.landmark = landmarks[tableView.indexPathForSelectedRow!.row]
         }

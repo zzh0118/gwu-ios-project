@@ -21,6 +21,7 @@ class LandmarkDetailViewController: UIViewController {
         super.viewDidLoad()
         
         landmarkName.text = landmark?.name
+       // landmarkDescription.attributedText = landmark?.name
        // landmarkImage.load(url: (landmark?.logoUrlString))
        // landmarkDescription.textStorage = landmark?.name
         // Do any additional setup after loading the view.

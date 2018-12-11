@@ -11,7 +11,7 @@ import UIKit
 class MetroTableViewCell: UITableViewCell {
 
     @IBOutlet weak var metroNameLabel: UILabel!
-    @IBOutlet weak var metroLogoImage: UIImageView!
+  
     @IBOutlet weak var metroAddressLabel: UILabel!
     
     override func awakeFromNib() {

@@ -67,7 +67,7 @@ class MetroStationsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("you select: \(indexPath.row)")
         
-        performSegue(withIdentifier: "LandmarksSegue", sender: self)
+        performSegue(withIdentifier: "landmarksSegue", sender: self)
         
     }
     
@@ -76,7 +76,7 @@ class MetroStationsViewController: UITableViewController {
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LandmarksSegue" {
+        if segue.identifier == "landmarksSegue" {
             let destination = segue.destination as! LandmarksViewController
             destination.station = metros[tableView.indexPathForSelectedRow!.row]
         }
