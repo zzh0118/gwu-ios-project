@@ -7,10 +7,13 @@
 //
 
 import Foundation
-struct Landmark {
+struct Landmark : Codable{
     let name: String
     let address: String
     let logoUrlString: URL
+    let rating :Double
+    var save: Bool
+    
 //    let latitude: Double
 //    let longitude: Double
 }

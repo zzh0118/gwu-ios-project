@@ -22,6 +22,7 @@ class MetroStationsViewController: UITableViewController {
             if searchType == "nearest"{
                 metros.sort(by: { $0.dis < $1.dis })
             }
+            
             tableView.reloadData()
         }
     }

@@ -12,6 +12,7 @@ import MBProgressHUD
 class LandmarksViewController: UITableViewController {
     let fetchLandmarksManager = FetchLandmarksManager()
     var station : Metro?
+    var searchType: String = "viewLandmarks"
     var landmarks = [Landmark]() {
         didSet {
             tableView.reloadData()
@@ -20,19 +21,23 @@ class LandmarksViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchLandmarks()
 
-
+        if searchType == "favorite" {
+            landmarks = PersistenceManager.sharedInstance.fetchLandmarks()
+        } else if searchType == "viewLandmarks" {
+            fetchLandmarks()
+        }
+        
         
     }
+    
     
     // MARK: - Table view data source
     private func fetchLandmarks(){
         MBProgressHUD.showAdded(to: self.view, animated: true)
         fetchLandmarksManager.delegate = self
         
-        fetchLandmarksManager.fetchLandmark(latitude:38.900140 , longitude: -77.049447)
-
+        fetchLandmarksManager.fetchLandmark(latitude: station?.latitude ?? 38.900140, longitude: station?.longitude ?? -77.049447)
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,18 +47,17 @@ class LandmarksViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return landmarks.count
     }
-    
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "landmarkCell", for: indexPath) as! LandmarkTableViewCell
-        
-        let landmark = landmarks[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "landmarkCell", for:indexPath) as! LandmarkTableViewCell
+        var landmark: Landmark?
 
-        cell.landmarkNameLabel.text = landmark.name
-        cell.landmarkAddressLabel.text = landmark.address
-        cell.landmarkLogoImage.load(url: landmark.logoUrlString)
-        //TODO: set the image
-        
+        landmark = landmarks[indexPath.row]
+
+        cell.landmarkNameLabel?.text = landmark?.name
+        cell.landmarkAddressLabel?.text = landmark?.address
+        cell.landmarkLogoImage?.load(url: landmark!.logoUrlString )
         return cell
     }
     

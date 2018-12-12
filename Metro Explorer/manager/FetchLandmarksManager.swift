@@ -27,7 +27,6 @@ class FetchLandmarksManager {
     }
     var delegate: FetchLandmarksDelegate?
     
-//    func fetchNearbyGyms(latitude: Double, longitude: Double)
     
     func fetchLandmark(latitude: Double, longitude: Double) {
         
@@ -81,13 +80,13 @@ class FetchLandmarksManager {
                 
                 for business in landmarkResponse.businesses {
                     
-                    let landmark = Landmark(name: business.name,address: business.location.address1,logoUrlString: business.imageUrl)
+                    let landmark = Landmark(name: business.name,address: business.location.address1,logoUrlString: business.imageUrl, rating: business.rating, save:false)
                     
                     landmarks.append(landmark)              }
                 
                 
                 //now what do we do with the gyms????
-                print(landmarks)
+                //print(landmarks)
                 
                 self.delegate?.landmarksFound(landmarks)
                 

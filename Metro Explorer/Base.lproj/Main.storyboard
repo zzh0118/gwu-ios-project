@@ -21,6 +21,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyN-Tp-tm4">
                                 <rect key="frame" x="60" y="454" width="200" height="30"/>
                                 <state key="normal" title="favorites"/>
+                                <connections>
+                                    <segue destination="TqK-H9-B2f" kind="show" identifier="favoriteSegue" id="XyL-7E-ICd"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFa-Ua-w0b">
                                 <rect key="frame" x="60" y="314" width="200" height="30"/>
@@ -29,14 +32,14 @@
                                 </constraints>
                                 <state key="normal" title="nearest"/>
                                 <connections>
-                                    <segue destination="cnU-JT-kdl" kind="show" id="DhE-u4-xxN"/>
+                                    <segue destination="cnU-JT-kdl" kind="show" identifier="nearestSegue" id="DhE-u4-xxN"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZR4-m0-0CC">
                                 <rect key="frame" x="60" y="384" width="200" height="30"/>
                                 <state key="normal" title="select station"/>
                                 <connections>
-                                    <segue destination="cnU-JT-kdl" kind="show" id="u1x-ls-11T"/>
+                                    <segue destination="cnU-JT-kdl" kind="show" identifier="searchSegue" id="u1x-ls-11T"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -96,7 +99,7 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="findacat" translatesAutoresizingMaskIntoConstraints="NO" id="RaH-ib-zdW" customClass="LandmarksImage">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="findacat" translatesAutoresizingMaskIntoConstraints="NO" id="RaH-ib-zdW">
                                             <rect key="frame" x="223" y="11" width="40" height="56"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="Mje-59-2nh"/>
@@ -132,7 +135,7 @@
             </objects>
             <point key="canvasLocation" x="141" y="1357"/>
         </scene>
-        <!--Landmark Detail View Controller-->
+        <!--Title-->
         <scene sceneID="mpJ-6l-riM">
             <objects>
                 <viewController id="TmB-6U-7aU" customClass="LandmarkDetailViewController" customModule="Metro_Explorer" customModuleProvider="target" sceneMemberID="viewController">
@@ -140,30 +143,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7j-Om-1dx" customClass="landmarkName">
-                                <rect key="frame" x="90" y="95" width="141" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7j-Om-1dx" customClass="landmarkName">
+                                <rect key="frame" x="90" y="91" width="141" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eV0-Hu-Rd4" customClass="landmarkDescription">
-                                <rect key="frame" x="40" y="367" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xyZ-g0-Ocg">
+                                <rect key="frame" x="166" y="180" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ymw-IN-8F4"/>
+                                    <constraint firstAttribute="width" constant="100" id="uic-0K-Aqr"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZrG-No-OzM">
+                                <rect key="frame" x="66" y="279" width="200" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="0lb-fr-QrD"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="10B-TC-H6I"/>
+                                    <constraint firstAttribute="height" constant="10" id="KuT-nK-mHA"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eV0-Hu-Rd4" customClass="landmarkDescription">
+                                <rect key="frame" x="40" y="324" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xyZ-g0-Ocg">
-                                <rect key="frame" x="40" y="167" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZrG-No-OzM" firstAttribute="trailing" secondItem="xyZ-g0-Ocg" secondAttribute="trailing" id="1e6-9w-PbR"/>
+                            <constraint firstItem="I7j-Om-1dx" firstAttribute="leading" secondItem="360-yU-Xoq" secondAttribute="leading" constant="90" id="3Zq-QS-yrm"/>
+                            <constraint firstItem="eV0-Hu-Rd4" firstAttribute="leading" secondItem="360-yU-Xoq" secondAttribute="leading" constant="40" id="Gdl-DE-YKD"/>
+                            <constraint firstItem="ZrG-No-OzM" firstAttribute="leading" secondItem="360-yU-Xoq" secondAttribute="leading" constant="66" id="Ka4-K2-Oea"/>
+                            <constraint firstItem="eV0-Hu-Rd4" firstAttribute="top" secondItem="ZrG-No-OzM" secondAttribute="bottom" constant="35" id="Lra-fs-Qws"/>
+                            <constraint firstItem="360-yU-Xoq" firstAttribute="bottom" secondItem="eV0-Hu-Rd4" secondAttribute="bottom" constant="72" id="Mbp-gb-m59"/>
+                            <constraint firstItem="ZrG-No-OzM" firstAttribute="centerY" secondItem="NU3-CQ-pmo" secondAttribute="centerY" id="SCK-jM-Jpc"/>
+                            <constraint firstItem="ZrG-No-OzM" firstAttribute="top" secondItem="xyZ-g0-Ocg" secondAttribute="bottom" constant="49" id="jZG-ze-fhu"/>
+                            <constraint firstItem="eV0-Hu-Rd4" firstAttribute="centerX" secondItem="NU3-CQ-pmo" secondAttribute="centerX" id="mH8-fZ-rWU"/>
+                            <constraint firstItem="xyZ-g0-Ocg" firstAttribute="top" secondItem="I7j-Om-1dx" secondAttribute="bottom" constant="48" id="vhA-ZY-uPO"/>
+                            <constraint firstItem="eV0-Hu-Rd4" firstAttribute="centerX" secondItem="I7j-Om-1dx" secondAttribute="centerX" id="wu4-pM-tKO"/>
+                            <constraint firstItem="I7j-Om-1dx" firstAttribute="top" secondItem="360-yU-Xoq" secondAttribute="top" constant="27" id="yyB-OC-Saw"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="360-yU-Xoq"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jzR-Y6-cWZ"/>
+                    <navigationItem key="navigationItem" title="Title" id="ZfD-Oy-QHB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="EUN-sr-Zj2">
+                            <connections>
+                                <action selector="favoriteButton:" destination="TmB-6U-7aU" id="FkR-3n-TGg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="landmarkDescription" destination="eV0-Hu-Rd4" id="8x4-SK-Rfe"/>
                         <outlet property="landmarkImage" destination="xyZ-g0-Ocg" id="iqf-cA-ZYp"/>
@@ -270,6 +302,7 @@
         <image name="findacat" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DhE-u4-xxN"/>
+        <segue reference="u1x-ls-11T"/>
+        <segue reference="XyL-7E-ICd"/>
     </inferredMetricsTieBreakers>
 </document>

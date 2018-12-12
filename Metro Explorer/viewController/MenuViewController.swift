@@ -27,6 +27,11 @@ class MenuViewController: UIViewController {
         performSegue(withIdentifier: "searchSegue", sender: self)
     }
     
+    @IBAction func favoriteButtonPressed(_ sender: Any){
+        print("favoriteButtonPressed")
+        performSegue(withIdentifier: "favoriteSegue", sender: self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -51,6 +56,10 @@ class MenuViewController: UIViewController {
         } else if segue.identifier == "searchSegue" {
             let destination = segue.destination as! MetroStationsViewController
             destination.searchType = "search"
+        } else if segue.identifier == "favoriteSegue"{
+            let destination = segue.destination as! LandmarksViewController
+
+            destination.searchType = "favorite"
         }
     }
 
