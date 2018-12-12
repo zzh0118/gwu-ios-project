@@ -17,13 +17,15 @@ class LandmarkDetailViewController: UIViewController {
     @IBOutlet weak var landmarkImage: UIImageView!
     @IBOutlet weak var landmarkDescription :UITextView!
     @IBOutlet weak var landmarkRate: UIImageView!
-    @IBAction func favoriteButton (_ sender: Any){
-        if (!landmark!.save){
+    @IBOutlet weak var landmarkFavoriteButton: UIBarButtonItem!
+    
+    // favorite button
+    @IBAction func favoriteButtonPressed (_ sender: Any){
+        if (!PersistenceManager.sharedInstance.checkStatus(landmarkCheck: landmark!)){
             let landmarkSaved = landmark
             
             PersistenceManager.sharedInstance.saveLandmark(landmark: landmarkSaved!)
-            landmark!.save = true
-            let message = "The name of landmark:  \(String(landmark!.name))" + "\n the address is \(String(landmark!.address))"
+            let message = "The name of landmark:  \(String(landmark!.name) )"
             
             let alert = UIAlertController(title: "Save to favorite", message: message, preferredStyle: .alert)
             
@@ -32,24 +34,42 @@ class LandmarkDetailViewController: UIViewController {
             alert.addAction(action)
             
             present(alert,animated: true,completion: nil)
+            
+            landmarkFavoriteButton.title = "saved"
+            
+            
         } else {
             
-            let message = "The name of landmark:  \(String(landmark!.name))" + "\n the address is \(String(landmark!.address) + " already saved")"
+            PersistenceManager.sharedInstance.deleteLandmark(landmarkDelete: landmark!)
             
-            let alert = UIAlertController(title: "Already Saved to favorite", message: message, preferredStyle: .alert)
+            let message = "Romve favorite landmark:  \(String(landmark!.name))"
+            
+            let alert = UIAlertController(title: "Remove Saved favorite", message: message, preferredStyle: .alert)
             
             let action = UIAlertAction(title: "ok", style: .default, handler: nil)
             
             alert.addAction(action)
             
             present(alert,animated: true,completion: nil)
+            
+            landmarkFavoriteButton.title = "save"
         }
     }
 
+    //share button
+    @IBAction func shareButtonPressed (_ sender: Any){
+        
+        
+        let shareText = "Check out this great landmark: \(landmark?.name) adddress: \(landmark?.address)"
+        
+        let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+        
+        present(activityViewController, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (PersistenceManager.sharedInstance.checkStatus(landmark: landmark!)){
+        if (PersistenceManager.sharedInstance.checkStatus(landmarkCheck: landmark!)){
             print("status = ture ")
         } else {
             print("status = false")

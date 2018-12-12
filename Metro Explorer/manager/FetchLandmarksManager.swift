@@ -80,7 +80,7 @@ class FetchLandmarksManager {
                 
                 for business in landmarkResponse.businesses {
                     
-                    let landmark = Landmark(name: business.name,address: business.location.address1,logoUrlString: business.imageUrl, rating: business.rating, save:false)
+                    let landmark = Landmark(name: business.name,address: business.location.address1,logoUrlString: business.imageUrl, rating: business.rating)
                     
                     landmarks.append(landmark)              }
                 

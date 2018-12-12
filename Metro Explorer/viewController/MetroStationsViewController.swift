@@ -13,6 +13,8 @@ import MBProgressHUD
 class MetroStationsViewController: UITableViewController {
     let locationDetector = LocationDetector()
     let fetchMetroStationsManager = FetchMetroStationsManager()
+    
+    //@IBOutlet weak var title: UINavigationItem
 
     var searchType = "search"
 
