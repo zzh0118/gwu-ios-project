@@ -16,6 +16,7 @@ class LandmarkDetailViewController: UIViewController {
     @IBOutlet weak var landmarkName: UILabel!
     @IBOutlet weak var landmarkImage: UIImageView!
     @IBOutlet weak var landmarkDescription :UITextView!
+    @IBOutlet weak var landmarkRate: UIImageView!
     @IBAction func favoriteButton (_ sender: Any){
         if (!landmark!.save){
             let landmarkSaved = landmark
@@ -55,10 +56,29 @@ class LandmarkDetailViewController: UIViewController {
         }
         landmarkName?.text = landmark?.name
         landmarkImage?.load(url: (landmark!.logoUrlString))
-        landmarkDescription?.text = landmark?.address
+        landmarkDescription?.text = String(landmark!.address)
         
+        let uiImage = fetchUIImage(rating: landmark!.rating)
+        landmarkRate?.image = UIImage(named: uiImage)
+        print(uiImage)
+       
     }
     
+    func fetchUIImage (rating: Double) -> String{
+        var rate: String
+        if rating == 1.5 {
+            rate = "extra_large_1_half"
+        } else if rating == 2.5 {
+            rate = "extra_large_2_half"
+        } else if rating == 3.5 {
+            rate = "extra_large_3_half"
+        } else if rating == 4.5 {
+            rate = "extra_large_4_half"
+        } else{
+            rate = "extra_large_\(Int(rating))"
+        }
+        return rate;
+    }
 
     /*
     // MARK: - Navigation
