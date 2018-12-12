@@ -15,7 +15,7 @@ class LandmarkDetailViewController: UIViewController {
     
     @IBOutlet weak var landmarkName: UILabel!
     @IBOutlet weak var landmarkImage: UIImageView!
-    @IBOutlet weak var landmarkDescription :UITextView!
+    @IBOutlet weak var landmarkDescription :UILabel!
     @IBOutlet weak var landmarkRate: UIImageView!
     @IBOutlet weak var landmarkFavoriteButton: UIBarButtonItem!
     

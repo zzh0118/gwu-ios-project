@@ -30,7 +30,7 @@ class FetchMetroStationsManager {
         urlComponents.queryItems = [
             URLQueryItem(name: "latitude", value: String(latitude)),
             URLQueryItem(name: "longitude", value: String(longitude)),
-//            URLQueryItem(name: "categories", value: "gyms")
+
         ]
 
         
