@@ -78,6 +78,7 @@ class LandmarksViewController: UITableViewController {
         if segue.identifier == "landmarksDetailSegue" {
             let destination = segue.destination as! LandmarkDetailViewController
             destination.landmark = landmarks[tableView.indexPathForSelectedRow!.row]
+            destination.metro = station
         }
     }
 }

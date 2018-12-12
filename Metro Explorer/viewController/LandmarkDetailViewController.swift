@@ -11,7 +11,7 @@ import UIKit
 class LandmarkDetailViewController: UIViewController {
     
     var landmark : Landmark?
-    
+    var metro : Metro?
     
     @IBOutlet weak var landmarkName: UILabel!
     @IBOutlet weak var landmarkImage: UIImageView!
@@ -65,6 +65,21 @@ class LandmarkDetailViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
         
         present(activityViewController, animated: true, completion: nil)
+    }
+    
+    @IBAction func getDirectionButtonPresse (_ sender: Any){
+       // let schemeURL = "http://maps.apple.com"
+        let mapURL = NSURL(string: "http://maps.google.com/?daddr=\(landmark?.latitude),\(landmark?.longitude)&t=h&dirflag=r")!
+
+
+        let isAvailable = UIApplication.shared.canOpenURL(mapURL as URL)
+        if isAvailable {
+            print("avaiable")
+            UIApplication.shared.open(mapURL as URL)
+        }  else {
+            print("not avaible")
+        }
+        
     }
     
     override func viewDidLoad() {

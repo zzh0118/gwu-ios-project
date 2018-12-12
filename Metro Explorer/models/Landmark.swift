@@ -13,6 +13,6 @@ struct Landmark : Codable{
     let logoUrlString: URL
     let rating :Double
     
-//    let latitude: Double
-//    let longitude: Double
+    let latitude: Double
+    let longitude: Double
 }
