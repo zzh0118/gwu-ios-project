@@ -86,7 +86,7 @@ class FetchLandmarksManager {
                 
                 
                 //now what do we do with the gyms????
-                //print(landmarks)
+
                 
                 self.delegate?.landmarksFound(landmarks)
                 

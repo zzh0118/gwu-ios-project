@@ -97,8 +97,7 @@ extension MetroStationsViewController: LocationDetectorDelegate {
         print("no location found :(")
         DispatchQueue.main.async {
             MBProgressHUD.hide(for: self.view, animated: true)
-            
-            //TODO: Show a AlertController with error
+
         }
     }
 }
